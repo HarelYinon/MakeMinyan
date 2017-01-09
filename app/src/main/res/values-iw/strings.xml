@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">צור מניין</string>
+    <string name="UserName_hint">משתמש</string>
+    <string name="password_hint">סיסמא</string>
+    <string name="LOGIN">התחבר!</string>
+    <string name="Register">הרשם!</string>
+    <string name="ShowPass">הצג סיסמא</string>
+    <string name="InvalidUserNameOrPassword">שם משתמש או סיסמא לא נכונים</string>
+
+</resources>

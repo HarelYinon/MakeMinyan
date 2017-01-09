@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Make Minyan</string>
+    <string name="UserName_hint">User</string>
+    <string name="password_hint">Password</string>
+    <string name="LOGIN">LOGIN!</string>
+    <string name="Register">Register!</string>
+    <string name="ShowPass">Show Password</string>
+    <string name="InvalidUserNameOrPassword">invalid user name\n or password</string>
+
+</resources>
