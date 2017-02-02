@@ -6,5 +6,9 @@
     <string name="Register">Register!</string>
     <string name="ShowPass">Show Password</string>
     <string name="InvalidUserNameOrPassword">invalid user name\n or password</string>
+    <string name="CreateMinyan">Create Minyan</string>
+    <string name="CreateShul">Create Shul</string>
+    <string name="ShulName_hint">Shul\'s Name</string>
+    <string name="Description_hint">Description</string>
 
 </resources>

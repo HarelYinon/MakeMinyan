@@ -15,7 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.Register"></activity>
+        <activity android:name=".controller.ActivityLogin" />
+        <activity android:name=".controller.CreateMinyan" />
+        <activity android:name=".controller.CreateShul"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,7 @@
 package minyanproject.ishai.harel.makeminyan.controller;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -17,11 +19,11 @@ import minyanproject.ishai.harel.makeminyan.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText userName;
-    private EditText userPassword;
-    private Button loginButton;
-    private CheckBox showPass;
-    private  Button registerButton;
+    private EditText etUserName;
+    private EditText etUserPassword;
+    private Button btnLoginButton;
+    private CheckBox cbShowPass;
+    private  Button btnRegisterButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,44 +34,69 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void findViews(){
-        userName = (EditText)findViewById(R.id.userName);
-        userPassword = (EditText)findViewById(R.id.userPassword);
-        loginButton = (Button) findViewById(R.id.loginButton);
-        registerButton = (Button) findViewById(R.id.registerButton);
-        showPass = ( CheckBox ) findViewById( R.id.showPass);
+        etUserName = (EditText)findViewById(R.id.etUserName);
+        etUserPassword = (EditText)findViewById(R.id.etUserPassword);
+        btnLoginButton = (Button) findViewById(R.id.btnLoginButton);
+        btnRegisterButton = (Button) findViewById(R.id.btnRegisterButton);
+        cbShowPass = ( CheckBox ) findViewById( R.id.cbShowPass);
 
-        loginButton.setOnClickListener(this);
-        registerButton.setOnClickListener(this);
+        btnLoginButton.setOnClickListener(this);
+        btnRegisterButton.setOnClickListener(this);
 
         final TransformationMethod passwordTransformationMethod = new PasswordTransformationMethod();
-        showPass.setOnCheckedChangeListener(new OnCheckedChangeListener()
+        cbShowPass.setOnCheckedChangeListener(new OnCheckedChangeListener()
         {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
             {
                 if ( isChecked )
                 {
-                    userPassword.setTransformationMethod(null);
+                    etUserPassword.setTransformationMethod(null);
                 }
                 else {
-                    userPassword.setTransformationMethod(passwordTransformationMethod);
+                    etUserPassword.setTransformationMethod(passwordTransformationMethod);
                 }
+                etUserPassword.setSelection(etUserPassword.getText().length());
             }
         });
     }
 
     @Override
     public void onClick(View v) {
-        if ( v == loginButton && CheckUserAndPass()) {
-            //TODO: create the next Activity for the cond above
+
+        CheckUserAndPass(v);
+        if ( v == btnLoginButton) {
+            SharedPreferences.Editor sharedPreferencesEditor = getSharedPreferences("userinfo",MODE_PRIVATE).edit();
+            sharedPreferencesEditor.putString("etUserName",etUserName.getText().toString());
+            sharedPreferencesEditor.putString("password",etUserPassword.getText().toString());
+            sharedPreferencesEditor.commit();
+            startActivityLogin();
         }
-        else{
-            Toast.makeText(getApplicationContext(), R.string.InvalidUserNameOrPassword, Toast.LENGTH_SHORT).show();
+        else if(v == btnRegisterButton) {
+            register();
         }
+
+    }
+
+    private void startActivityLogin() {
+        Intent myIntent = new Intent(this,ActivityLogin.class);
+        startActivity(myIntent);
+    }
+
+    private void register()
+    {
+        //TODO: implement register operation!!!!!
     }
 
     //TODO: this func need to check if the User exist and the password is the right password
-    private boolean CheckUserAndPass() {
-        return false;
+    private boolean CheckUserAndPass(View v) {
+        if(v==btnLoginButton){
+
+        }
+        else if (v==btnRegisterButton){
+
+        }
+        Toast.makeText(getApplicationContext(), R.string.InvalidUserNameOrPassword, Toast.LENGTH_SHORT).show();
+        return true;
     }
 }

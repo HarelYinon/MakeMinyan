@@ -7,5 +7,9 @@
     <string name="Register">הרשם!</string>
     <string name="ShowPass">הצג סיסמא</string>
     <string name="InvalidUserNameOrPassword">שם משתמש או סיסמא לא נכונים</string>
+    <string name="CreateMinyan">צור מניין</string>
+    <string name="CreateShul">צור בית כנסת</string>
+    <string name="ShulName_hint">שם בית הכנסת</string>
+    <string name="Description_hint">תיאור</string>
 
 </resources>
