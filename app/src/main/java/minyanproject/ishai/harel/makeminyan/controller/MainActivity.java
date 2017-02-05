@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.text.method.TransformationMethod;
 import android.view.View;
@@ -15,6 +14,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import minyanproject.ishai.harel.makeminyan.LoginNavigationController;
 import minyanproject.ishai.harel.makeminyan.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -66,16 +66,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         CheckUserAndPass(v);
         if ( v == btnLoginButton) {
-            SharedPreferences.Editor sharedPreferencesEditor = getSharedPreferences("userinfo",MODE_PRIVATE).edit();
-            sharedPreferencesEditor.putString("etUserName",etUserName.getText().toString());
-            sharedPreferencesEditor.putString("password",etUserPassword.getText().toString());
-            sharedPreferencesEditor.commit();
-            startActivityLogin();
+            SharedPreferences.Editor editor = getSharedPreferences("userinfo",MODE_PRIVATE).edit();
+            editor.putString("etUserName",etUserName.getText().toString());
+            editor.putString("password",etUserPassword.getText().toString());
+            editor.commit();
+            startNavigationController();
+            //startActivityLogin();
         }
         else if(v == btnRegisterButton) {
             register();
         }
 
+    }
+
+    private void startNavigationController(){
+        Intent myIntent = new Intent(this, LoginNavigationController.class);
+        startActivity(myIntent);
     }
 
     private void startActivityLogin() {

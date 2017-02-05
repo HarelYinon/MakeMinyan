@@ -11,4 +11,36 @@
     <string name="ShulName_hint">Shul\'s Name</string>
     <string name="Description_hint">Description</string>
 
+
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>Profile</item>
+        <item>Add Minyan</item>
+        <item>Add Shul</item>
+        <item>Log-Out</item>
+        <item>Pages</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@mipmap/add_pic</item>
+        <item>@mipmap/logout_pic</item>
+        <item>@mipmap/profile_pic</item>
+
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+    <string name="title_activity_navigation_controller">Navigation_controller</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
 </resources>

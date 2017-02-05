@@ -2,11 +2,11 @@ package minyanproject.ishai.harel.makeminyan.controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 
 import minyanproject.ishai.harel.makeminyan.R;
 
 public class ActivityLogin extends AppCompatActivity {
-
 
 
     @Override
