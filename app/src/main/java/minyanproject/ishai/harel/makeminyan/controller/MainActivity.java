@@ -63,17 +63,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        CheckUserAndPass(v);
-        if ( v == btnLoginButton) {
-            SharedPreferences.Editor editor = getSharedPreferences("userinfo",MODE_PRIVATE).edit();
-            editor.putString("etUserName",etUserName.getText().toString());
-            editor.putString("password",etUserPassword.getText().toString());
-            editor.commit();
-            startNavigationController();
-            //startActivityLogin();
-        }
-        else if(v == btnRegisterButton) {
-            register();
+        if(CheckUserAndPass(v)) {
+            if (v == btnLoginButton) {
+                SharedPreferences.Editor editor = getSharedPreferences("userinfo", MODE_PRIVATE).edit();
+                editor.putString("username", etUserName.getText().toString());
+                editor.putString("password", etUserPassword.getText().toString());
+                editor.commit();
+                startNavigationController();
+                finish();
+            } else if (v == btnRegisterButton) {
+                register();
+            }
         }
 
     }
@@ -91,13 +91,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //TODO: this func need to check if the User exist and the password is the right password
     private boolean CheckUserAndPass(View v) {
-        if(v==btnLoginButton){
-
-        }
-        else if (v==btnRegisterButton){
-
+        if(!etUserName.getText().toString().isEmpty() &&
+                !etUserPassword.getText().toString().isEmpty()){
+            if(v==btnLoginButton){
+                return true;
+            }
+            else if (v==btnRegisterButton){
+                return true;
+            }
         }
         Toast.makeText(getApplicationContext(), R.string.InvalidUserNameOrPassword, Toast.LENGTH_SHORT).show();
-        return true;
+        return false;
     }
 }

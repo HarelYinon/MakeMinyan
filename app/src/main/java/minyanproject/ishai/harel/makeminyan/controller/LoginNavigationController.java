@@ -1,7 +1,9 @@
 package minyanproject.ishai.harel.makeminyan.controller;
 
 import android.app.FragmentManager;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -13,6 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import minyanproject.ishai.harel.makeminyan.R;
 
@@ -28,16 +33,50 @@ public class LoginNavigationController extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       /* TextView tv = (TextView) findViewById(R.id.tvUserName);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        tv.setText(sharedPreferences.getString("UserName",null));*///TODO: make it work!!!
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar snackbar = Snackbar.make(view, "", Snackbar.LENGTH_LONG);
+
+// Get the Snackbar's layout view
+                Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) snackbar.getView();
+
+
+// Hide the text
+                TextView textView = (TextView) layout.findViewById(android.support.design.R.id.snackbar_text);
+                textView.setVisibility(View.INVISIBLE);
+
+// Inflate our custom view
+                View snackView = getLayoutInflater().inflate(R.layout.add_snackbar, null);
+
+                Button btnCrShl = (Button) snackView.findViewById(R.id.btnCrtShl);
+                btnCrShl.setText(btnCrShl.getText().toString() + "  ");
+                btnCrShl.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FragmentManager fragmentManager = getFragmentManager();
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.content_frame, new ShulFragment())
+                                .commit();
+                    }
+                });
+
+                Button btnCrMn = (Button) snackView.findViewById(R.id.btnCrtMnyn);
+                btnCrMn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FragmentManager fragmentManager = getFragmentManager();
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.content_frame, new MinyanFragment())
+                                .commit();
+                    }
+                });
+// Add the view to the Snackbar's layout
+                layout.addView(snackView, 0);
+// Show the Snackbar
+                snackbar.show();
             }
         });
 
@@ -49,6 +88,11 @@ public class LoginNavigationController extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        TextView tv = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tvUserName);
+        SharedPreferences sharedPreferences = getSharedPreferences("userinfo",MODE_PRIVATE);
+        tv.setText(sharedPreferences.getString("username","Anonymous"));//TODO: make it work!!!
 
     }
 
@@ -96,18 +140,20 @@ public class LoginNavigationController extends AppCompatActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame, new ProfileFragment())
                     .commit();
-        } else if (id == R.id.nav_second_layout) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new SecondFragment())
-                    .commit();
-        } else if (id == R.id.nav_third_layout) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new ThirdFragment())
-                    .commit();
+        } else if(id == R.id.logout) {
+            clearSharedPreferences();
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void clearSharedPreferences() {
+        SharedPreferences sharedPreferences = getSharedPreferences("userinfo", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.commit();
+        Toast.makeText(this, "clear Preferences", Toast.LENGTH_SHORT).show(); }
 }

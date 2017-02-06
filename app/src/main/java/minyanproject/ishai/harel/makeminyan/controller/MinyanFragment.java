@@ -12,14 +12,14 @@ import android.view.ViewGroup;
 
 import minyanproject.ishai.harel.makeminyan.R;
 
-public class ThirdFragment extends Fragment {
+public class MinyanFragment extends Fragment {
 
     View myView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.third_layout,container,false);
+        myView = inflater.inflate(R.layout.minyan_layout,container,false);
         return myView;
     }
 }
