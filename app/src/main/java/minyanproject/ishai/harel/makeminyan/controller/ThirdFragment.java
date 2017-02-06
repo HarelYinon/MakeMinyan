@@ -1,4 +1,4 @@
-package minyanproject.ishai.harel.makeminyan;
+package minyanproject.ishai.harel.makeminyan.controller;
 
 /**
  * Created by Harel on 04/02/2017.
@@ -9,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import minyanproject.ishai.harel.makeminyan.R;
 
 public class ThirdFragment extends Fragment {
 

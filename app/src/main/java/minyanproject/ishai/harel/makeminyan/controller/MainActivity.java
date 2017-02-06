@@ -14,7 +14,6 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import minyanproject.ishai.harel.makeminyan.LoginNavigationController;
 import minyanproject.ishai.harel.makeminyan.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -84,10 +83,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(myIntent);
     }
 
-    private void startActivityLogin() {
-        Intent myIntent = new Intent(this,ActivityLogin.class);
-        startActivity(myIntent);
-    }
 
     private void register()
     {

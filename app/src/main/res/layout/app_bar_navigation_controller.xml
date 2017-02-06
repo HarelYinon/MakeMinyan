@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="minyanproject.ishai.harel.makeminyan.LoginNavigationController">
+    tools:context="minyanproject.ishai.harel.makeminyan.controller.LoginNavigationController">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

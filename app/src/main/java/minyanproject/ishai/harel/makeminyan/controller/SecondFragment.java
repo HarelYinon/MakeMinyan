@@ -1,4 +1,4 @@
-package minyanproject.ishai.harel.makeminyan;
+package minyanproject.ishai.harel.makeminyan.controller;
 
 /**
  * Created by Harel on 04/02/2017.
@@ -10,14 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ProfileFragment extends Fragment {
+import minyanproject.ishai.harel.makeminyan.R;
+
+public class SecondFragment extends Fragment {
 
     View myView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.profile_layout,container,false);
+        myView = inflater.inflate(R.layout.second_layout,container,false);
         return myView;
     }
 }

@@ -1,4 +1,4 @@
-package minyanproject.ishai.harel.makeminyan;
+package minyanproject.ishai.harel.makeminyan.controller;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import minyanproject.ishai.harel.makeminyan.R;
 
 
 public class LoginNavigationController extends AppCompatActivity

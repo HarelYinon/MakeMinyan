@@ -15,11 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.ActivityLogin" />
-        <activity android:name=".controller.CreateMinyan" />
-        <activity android:name=".controller.CreateShul" />
         <activity
-            android:name=".LoginNavigationController"
+            android:name=".controller.LoginNavigationController"
             android:label="@string/title_activity_navigation_controller"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
