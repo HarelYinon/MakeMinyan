@@ -1,6 +1,7 @@
 package minyanproject.ishai.harel.makeminyan.controller;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -155,5 +156,5 @@ public class LoginNavigationController extends AppCompatActivity
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.commit();
-        Toast.makeText(this, "clear Preferences", Toast.LENGTH_SHORT).show(); }
+    }
 }

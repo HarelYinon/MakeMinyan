@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:background="@android:drawable/editbox_background"
-        android:hint= "@string/UserName_hint"/>
+        android:hint= "@string/NewUserNm"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,9 +23,9 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textSize="20sp"
-            android:id="@+id/etUserPassword"
+            android:id="@+id/etNewPass"
             android:background="@android:drawable/editbox_background"
-            android:hint="new_password_hint" />
+            android:hint="@string/NewPass" />
 
         <CheckBox
             android:text="@string/ShowPass"
@@ -47,9 +47,9 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textSize="20sp"
-            android:id="@+id/etVerifyPassword"
+            android:id="@+id/etVerifyNewPass"
             android:background="@android:drawable/editbox_background"
-            android:hint="new_password_hint" />
+            android:hint="@string/VerifyNewPass" />
 
         <CheckBox
             android:text="@string/ShowPass"
@@ -61,10 +61,10 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnLoginButton"
+        android:id="@+id/btnUpdateProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update"
+        android:text="@string/UpdateProfile"
         android:layout_marginTop="18dp"
         android:layout_gravity="center" />
 

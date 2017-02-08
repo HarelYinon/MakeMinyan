@@ -12,4 +12,54 @@
     <string name="ShulName_hint">שם בית הכנסת</string>
     <string name="Description_hint">תיאור</string>
 
+    <string name="EmptyField">קיים שדה ריק</string>
+
+    <string name="Profile">פרופיל</string>
+    <string name="LogOut">התנתק</string>
+    <string name="MoreOptions">אפשרויות נוספות</string>
+
+    <string name="NewUserNm">שם משתמש חדש</string>
+    <string name="NewPass">סיסמא חדשה</string>
+    <string name="VerifyNewPass">אמת סיסמא חדשה</string>
+    <string name="UpdateProfile">עדכן פרופיל</string>
+
+    <string name="Email">דוא\"ל</string>
+    <string name="Telephone">טלפון</string>
+    <string name="Website">אתר אינרטנט</string>
+    <string name="City">יישוב</string>
+    <string name="Street">רחוב</string>
+    <string name="Number">מספר</string>
+    <string name="AddShul">הוסף בית כנסת</string>
+
+    <string name="Ashkenazi">אשכנזי</string>
+    <string name="Sfaradi">ספרדי</string>
+    <string name="Else">אחר</string>
+    <string name="Shachrit">שחרית</string>
+    <string name="Mincha">מנחה</string>
+    <string name="Arvit">ערבית</string>
+    <string name="CoseDays">בחר ימים</string>
+    <string name="SUN">א\'</string>
+    <string name="MUN">ב\'</string>
+    <string name="TUE">ג\'</string>
+    <string name="WEN">ד\'</string>
+    <string name="THU">ה\'</string>
+    <string name="FRI">ו\'</string>
+    <string name="SAT">שבת </string>
+    <string name="EveryDay">כל הימים  </string>
+    <string name="Hour">שעות </string>
+    <string name="Minute">דקות </string>
+    <string name="AddMinyan">הוסף מניין</string>
+
+
+    <string name="title_activity_navigation_controller">שלט ניווט</string>
+
+    <string name="nussach_prompt">בחר נוסח</string>
+
+    <string-array name="nussach_arrays">
+        <item>אשכנזי</item>
+        <item>ספרדי</item>
+        <item>אחר</item>
+
+    </string-array>
+
 </resources>

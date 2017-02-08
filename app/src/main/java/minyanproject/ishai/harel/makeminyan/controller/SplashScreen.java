@@ -31,13 +31,18 @@ public class SplashScreen extends AppCompatActivity {
                     changeText(userNm);
                 }
                 /* Create an Intent that will start the Menu-Activity. */
-                if(userNm.isEmpty())
+                if(userNm.isEmpty()) {
                     startMainActivity();
-                else
+                }
+                else {
                     startNavigationController();
+                }
+
                 SplashScreen.this.finish();
             }
         }, 1500);
+
+
     }
 
 
@@ -56,4 +61,5 @@ public class SplashScreen extends AppCompatActivity {
         Intent myIntent = new Intent(this, MainActivity.class);
         startActivity(myIntent);
     }
+
 }

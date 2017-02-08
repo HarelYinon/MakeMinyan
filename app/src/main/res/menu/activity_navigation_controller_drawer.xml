@@ -6,16 +6,16 @@
             android:id="@+id/nav_profile_layout"
             android:icon="@mipmap/profile_pic"
 
-            android:title="Profile" />
+            android:title="@string/Profile" />
 
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/MoreOptions">
         <menu>
             <item
                 android:id="@+id/logout"
                 android:icon="@mipmap/logout_pic"
-                android:title="Log Out" />
+                android:title="@string/LogOut" />
 
         </menu>
     </item>
