@@ -15,17 +15,15 @@ public class Shul {
     public int _id;
     public String description;
     public String username;
-    public String email;
     public String website;
     public String telephone;
 
-    public Shul(String name, String location, int _id, String description, String username, String email, String website, String telephone) {
+    public Shul(String name, String location, String description,final String username, String website, String telephone) {
         this.name = name;
         this.location = location;
-        this._id = _id;
+        this._id = 0;
         this.description = description;
         this.username = username;
-        this.email = email;
         this.website = website;
         this.telephone = telephone;
     }
@@ -36,20 +34,18 @@ public class Shul {
         this.location = jsonObject.getString("location");
         this.description = jsonObject.getString("description");
         this.username = jsonObject.getString("username");
-        this.email =        jsonObject.getString("email");
         this.website =      jsonObject.getString("website");
         this.telephone =    jsonObject.getString("telephone");
     }
 
     public Shul(Cursor Cursor){
-        this._id =          Cursor.getInt(0);
-        this.name =         Cursor.getString(1);
-        this.location =     Cursor.getString(2);
-        this.description =  Cursor.getString(3);
-        this.username =     Cursor.getString(4);
-        this.email =        Cursor.getString(5);
-        this.website =      Cursor.getString(6);
-        this.telephone =    Cursor.getString(7);
+        this._id         =  Cursor.getInt(0);
+        this.name        =  Cursor.getString(1);
+        this.website     =  Cursor.getString(2);
+        this.telephone   =  Cursor.getString(3);
+        this.location    =  Cursor.getString(4);
+        this.description =  Cursor.getString(5);
+        this.username    =  Cursor.getString(6);
     }
 
     @Override
@@ -58,8 +54,7 @@ public class Shul {
                 "&location=" + location + 
                 "&_id=" + _id +
                 "&description=" + description + 
-                "&username=" + username + 
-                "&email=" + email + 
+                "&username=" + username +
                 "&website=" + website + 
                 "&telephone=" + telephone;
     }

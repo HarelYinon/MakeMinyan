@@ -35,7 +35,7 @@
     <string name="Arvit">Arvit</string>
     <string name="CoseDays">Choose Days:</string>
     <string name="SUN">SUN </string>
-    <string name="MUN">MUN </string>
+    <string name="MON">MUN </string>
     <string name="TUE">TUE </string>
     <string name="WEN">WEN </string>
     <string name="THU">THU </string>
@@ -61,7 +61,7 @@
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
         <item>@mipmap/add_pic</item>
-        <item>@mipmap/logout_pic</item>
+        <item>@drawable/ic_logout</item>
         <item>@mipmap/profile_pic</item>
 
     </array>

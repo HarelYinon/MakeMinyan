@@ -13,13 +13,26 @@
         android:hint="@string/ShulName_hint"
         android:textSize="20sp" />
 
-    <Spinner
-        android:id="@+id/spnrNussach"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:entries="@array/nussach_arrays"
-        android:prompt="@string/nussach_prompt" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Spinner
+            android:id="@+id/spnrNussach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:entries="@array/nussach_arrays"
+            android:prompt="@string/nussach_prompt" />
+
+        <EditText
+            android:id="@+id/etNussach"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/editbox_background"
+            android:visibility="gone"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llType"
@@ -76,13 +89,6 @@
             android:text="@string/EveryDay"
             android:textSize="18sp" />
 
-        <CheckBox
-            android:id="@+id/cbSUN"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/editbox_background"
-            android:text="@string/SUN"
-            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -91,65 +97,81 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/cbMUN"
+        <ToggleButton
+            android:id="@+id/tbSUN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:drawable/editbox_background"
-            android:text="@string/MUN"
+            android:background="@drawable/day_toggle"
+            android:textColor="@color/day_toggle_text"
+            android:textOff="@string/SUN"
+            android:textOn="@string/SUN"
             android:textSize="18sp" />
 
-        <CheckBox
-            android:id="@+id/cbTUE"
+        <ToggleButton
+            android:id="@+id/tbMON"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:drawable/editbox_background"
-            android:text="@string/TUE"
+            android:background="@drawable/day_toggle"
+            android:textColor="@color/day_toggle_text"
+            android:textOff="@string/MON"
+            android:textOn="@string/MON"
             android:textSize="18sp" />
 
-        <CheckBox
-            android:id="@+id/cbWEN"
+        <ToggleButton
+            android:id="@+id/tbTUE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:drawable/editbox_background"
-            android:text="@string/WEN"
+            android:background="@drawable/day_toggle"
+            android:textColor="@color/day_toggle_text"
+            android:textOff="@string/TUE"
+            android:textOn="@string/TUE"
             android:textSize="18sp" />
 
-        />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <CheckBox
-            android:id="@+id/cbTHU"
+        <ToggleButton
+            android:id="@+id/tbWEN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:drawable/editbox_background"
-            android:text="@string/THU"
+            android:background="@drawable/day_toggle"
+            android:textColor="@color/day_toggle_text"
+            android:textOff="@string/WEN"
+            android:textOn="@string/WEN"
             android:textSize="18sp" />
 
-        <CheckBox
-            android:id="@+id/cbFRI"
+        <ToggleButton
+            android:id="@+id/tbTHU"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:drawable/editbox_background"
-            android:text="@string/FRI"
+            android:background="@drawable/day_toggle"
+            android:textColor="@color/day_toggle_text"
+            android:textOff="@string/THU"
+            android:textOn="@string/THU"
             android:textSize="18sp" />
 
-        <CheckBox
-            android:id="@+id/cbSAT"
+        <ToggleButton
+            android:id="@+id/tbFRI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:drawable/editbox_background"
-            android:text="@string/SAT"
+            android:background="@drawable/day_toggle"
+            android:textColor="@color/day_toggle_text"
+            android:textOff="@string/FRI"
+            android:textOn="@string/FRI"
+            android:textSize="18sp" />
+
+        <ToggleButton
+            android:id="@+id/tbSAT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/day_toggle"
+            android:textColor="@color/day_toggle_text"
+            android:textOff="@string/SAT"
+            android:textOn="@string/SAT"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -175,40 +197,14 @@
                 android:text="@string/Shachrit"
                 android:textSize="16dp" />
 
-            <LinearLayout
+            <Button
+                android:id="@+id/btnSaTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:text="Pick Time"
+                android:textSize="10dp" />
 
-                <EditText
-                    android:id="@+id/etSaHour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:background="@android:drawable/editbox_background"
-                    android:hint="00"
-                    android:inputType="numberDecimal"
-                    android:maxLength="2"
-                    android:textSize="20sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=":"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/etSaMinute"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:background="@android:drawable/editbox_background"
-                    android:hint="00"
-                    android:inputType="numberDecimal"
-                    android:maxLength="2"
-                    android:textSize="20sp" />
-
-            </LinearLayout>
         </LinearLayout>
 
 
@@ -227,37 +223,13 @@
                 android:text="@string/Mincha"
                 android:textSize="16dp" />
 
-            <LinearLayout
+            <Button
+                android:id="@+id/btnMiTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:text="Pick Time"
+                android:textSize="10dp" />
 
-                <EditText
-                    android:id="@+id/etMiHour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:drawable/editbox_background"
-                    android:hint="00"
-                    android:inputType="numberDecimal"
-                    android:maxLength="2"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=":"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/etMiMinute"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:drawable/editbox_background"
-                    android:hint="00"
-                    android:inputType="numberDecimal"
-                    android:maxLength="2"
-                    android:textSize="20sp" />
-            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -275,38 +247,13 @@
                 android:text="@string/Arvit"
                 android:textSize="16dp" />
 
-            <LinearLayout
+            <Button
+                android:id="@+id/btnArTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:text="Pick Time"
+                android:textSize="10dp" />
 
-                <EditText
-                    android:id="@+id/etArHour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:drawable/editbox_background"
-                    android:hint="00"
-                    android:inputType="numberDecimal"
-                    android:maxLength="2"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=":"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/etArMinute"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:drawable/editbox_background"
-                    android:hint="00"
-                    android:inputType="numberDecimal"
-                    android:maxLength="2"
-                    android:textSize="20sp" />
-
-            </LinearLayout>
         </LinearLayout>
 
 
@@ -318,6 +265,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="18dp"
+        android:gravity="bottom"
         android:text="@string/AddMinyan" />
 
 </LinearLayout>

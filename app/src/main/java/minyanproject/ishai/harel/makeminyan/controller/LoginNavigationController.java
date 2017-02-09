@@ -93,7 +93,7 @@ public class LoginNavigationController extends AppCompatActivity
 
         TextView tv = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tvUserName);
         SharedPreferences sharedPreferences = getSharedPreferences("userinfo",MODE_PRIVATE);
-        tv.setText(sharedPreferences.getString("username","Anonymous"));//TODO: make it work!!!
+        tv.setText(sharedPreferences.getString("username","Anonymous"));
 
     }
 

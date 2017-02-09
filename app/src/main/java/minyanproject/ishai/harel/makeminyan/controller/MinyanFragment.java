@@ -4,6 +4,7 @@ package minyanproject.ishai.harel.makeminyan.controller;
  * Created by Harel on 04/02/2017.
  */
 import android.app.Fragment;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -15,7 +16,12 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import java.util.Timer;
 
 import minyanproject.ishai.harel.makeminyan.R;
 
@@ -30,25 +36,21 @@ public class MinyanFragment extends Fragment {
     CheckBox cbArvit;
 
     CheckBox cbED;
-    CheckBox cbSUN;
-    CheckBox cbMUN;
-    CheckBox cbTUE;
-    CheckBox cbWEN;
-    CheckBox cbTHU;
-    CheckBox cbFRI;
-    CheckBox cbSAT;
+    ToggleButton tbSUN;
+    ToggleButton tbMON;
+    ToggleButton tbTUE;
+    ToggleButton tbWEN;
+    ToggleButton tbTHU;
+    ToggleButton tbFRI;
+    ToggleButton tbSAT;
 
     LinearLayout llDaysSrt;
     LinearLayout llDaysMin;
     LinearLayout llDaysArv;
 
-    EditText etSaHour;
-    EditText etSaMinute;
-    EditText etMiHour;
-    EditText etMiMinute;
-    EditText etArHour;
-    EditText etArMinute;
-
+    Button btnSaTime;
+    Button btnMiTime;
+    Button btnArTime;
     Button btnAddShl;
 
     @Nullable
@@ -59,38 +61,37 @@ public class MinyanFragment extends Fragment {
         return myView;
     }
 
+
     private void findViews(View myView)
     {
         try {
 
             etShlID = (EditText) myView.findViewById(R.id.etShulID);
-            etSaHour = (EditText) myView.findViewById(R.id.etSaHour);
-            etSaMinute = (EditText) myView.findViewById(R.id.etSaMinute);
-            etMiHour = (EditText) myView.findViewById(R.id.etMiHour);
-            etMiMinute = (EditText) myView.findViewById(R.id.etMiMinute);
-            etArHour = (EditText) myView.findViewById(R.id.etArHour);
-            etArMinute = (EditText) myView.findViewById(R.id.etArMinute);
 
             cbSachrit = (CheckBox) myView.findViewById(R.id.cbShachrit);
             cbMincha = (CheckBox) myView.findViewById(R.id.cbMincha);
             cbArvit = (CheckBox) myView.findViewById(R.id.cbArvit);
 
             cbED = (CheckBox) myView.findViewById(R.id.cbED);
-            cbSUN = (CheckBox) myView.findViewById(R.id.cbSUN);
-            cbMUN = (CheckBox) myView.findViewById(R.id.cbMUN);
-            cbTUE = (CheckBox) myView.findViewById(R.id.cbTUE);
-            cbWEN = (CheckBox) myView.findViewById(R.id.cbWEN);
-            cbTHU = (CheckBox) myView.findViewById(R.id.cbTHU);
-            cbFRI = (CheckBox) myView.findViewById(R.id.cbFRI);
-            cbSAT = (CheckBox) myView.findViewById(R.id.cbSAT);
+            tbSUN = (ToggleButton) myView.findViewById(R.id.tbSUN);
+            tbMON = (ToggleButton) myView.findViewById(R.id.tbMON);
+            tbTUE = (ToggleButton) myView.findViewById(R.id.tbTUE);
+            tbWEN = (ToggleButton) myView.findViewById(R.id.tbWEN);
+            tbTHU = (ToggleButton) myView.findViewById(R.id.tbTHU);
+            tbFRI = (ToggleButton) myView.findViewById(R.id.tbFRI);
+            tbSAT = (ToggleButton) myView.findViewById(R.id.tbSAT);
 
             llDaysSrt = (LinearLayout) myView.findViewById(R.id.llDaysSrt);
             llDaysMin = (LinearLayout) myView.findViewById(R.id.llDaysMin);
             llDaysArv = (LinearLayout) myView.findViewById(R.id.llDaysArv);
 
+            btnArTime = (Button) myView.findViewById(R.id.btnArTime);
+            btnMiTime = (Button) myView.findViewById(R.id.btnMiTime);
+            btnSaTime = (Button) myView.findViewById(R.id.btnSaTime);
+
             btnAddShl = (Button) myView.findViewById(R.id.btnAddShl);
 
-            initCb();
+            initViews();
         }
         catch (Exception e) {
 
@@ -98,7 +99,7 @@ public class MinyanFragment extends Fragment {
 
     }
 
-    private void initCb()
+    private void initViews()
     {
         cbED.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
@@ -107,22 +108,22 @@ public class MinyanFragment extends Fragment {
             {
                 if ( isChecked )
                 {
-                    cbSUN.setChecked(true);
-                    cbMUN.setChecked(true);
-                    cbTUE.setChecked(true);
-                    cbWEN.setChecked(true);
-                    cbTHU.setChecked(true);
-                    cbFRI.setChecked(true);
-                    cbSAT.setChecked(true);
+                    tbSUN.setChecked(true);
+                    tbMON.setChecked(true);
+                    tbTUE.setChecked(true);
+                    tbWEN.setChecked(true);
+                    tbTHU.setChecked(true);
+                    tbFRI.setChecked(true);
+                    tbSAT.setChecked(true);
                 }
                 else {
-                    cbSUN.setChecked(false);
-                    cbMUN.setChecked(false);
-                    cbTUE.setChecked(false);
-                    cbWEN.setChecked(false);
-                    cbTHU.setChecked(false);
-                    cbFRI.setChecked(false);
-                    cbSAT.setChecked(false);
+                    tbSUN.setChecked(false);
+                    tbMON.setChecked(false);
+                    tbTUE.setChecked(false);
+                    tbWEN.setChecked(false);
+                    tbTHU.setChecked(false);
+                    tbFRI.setChecked(false);
+                    tbSAT.setChecked(false);
                 }
 
             }
@@ -176,5 +177,50 @@ public class MinyanFragment extends Fragment {
 
             }
         });
+
+        btnSaTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickTime(btnSaTime);
+            }
+        });
+
+        btnMiTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickTime(btnMiTime);
+            }
+        });
+
+        btnArTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickTime(btnArTime);
+            }
+        });
+
+        btnAddShl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                addMinyan();
+            }
+        });
+    }
+
+    private void pickTime(final Button btn)
+    {
+        new TimePickerDialog(getActivity(), (new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                String text = hourOfDay + ":" + minute;
+                btn.setText(text);
+            }
+        }),0,0,true).show();
+    }
+
+    private void addMinyan()
+    {
+
     }
 }

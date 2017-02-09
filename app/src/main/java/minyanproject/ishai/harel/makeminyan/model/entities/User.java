@@ -10,6 +10,13 @@ import java.io.StringReader;
 public class User {
     String username;
     String password;
+    String email;
+
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 
     public User(String username, String password) {
         this.username = username;
@@ -30,8 +37,10 @@ public class User {
         return password;
     }
 
+    public String getEmail() { return email; }
+
     @Override
     public String toString() {
-        return username + "\n" +  password;
+        return username + "\n" + password;
     }
 }

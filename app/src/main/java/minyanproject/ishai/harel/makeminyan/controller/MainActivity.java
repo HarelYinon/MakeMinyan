@@ -96,11 +96,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         User email = new User("Email",null);
 
         if(localUser.getUsername().isEmpty())
-            ;
+            Toast.makeText(this,"Enter UserName",Toast.LENGTH_LONG);
         else if(localUser.getPassword().isEmpty())
-            ;
+            Toast.makeText(this,"Enter Password",Toast.LENGTH_LONG);
         else if(email.getUsername().isEmpty())
-            ;
+            Toast.makeText(this,"Enter Email",Toast.LENGTH_LONG);
         else
         {
             new AsyncTask<User, Void, Boolean>() {
@@ -131,19 +131,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         User localUser = new User(etUserName.getText().toString(),etUserPassword.getText().toString());
 
         if(localUser.getUsername().isEmpty())
-            ;
+            Toast.makeText(this,"Enter UserName",Toast.LENGTH_LONG);
         else if(localUser.getPassword().isEmpty())
-            ;
+            Toast.makeText(this,"Enter Password",Toast.LENGTH_LONG);
         else
         {
             new AsyncTask<User, Void, Boolean>() {
                 @Override
                 protected Boolean doInBackground(User... params) {
                     PHPDataBaseHelper phpDataBaseHelper = new PHPDataBaseHelper();
-                    if (phpDataBaseHelper.signin(params[0].getUsername(),
-                            params[0].getPassword()))
-                        return true;
-                    return false;
+                    return (phpDataBaseHelper.signin(params[0].getUsername(),
+                            params[0].getPassword()));
                 }
 
                 @Override

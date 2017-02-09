@@ -35,7 +35,7 @@ public class PHPDataBaseHelper {
     public boolean signin(String username,String password){
         try {
             String response = getResponse(serverUri.buildUpon()
-                    .appendEncodedPath("signin/")
+                    .appendEncodedPath("signin.php")
                     .appendQueryParameter("username",username)
                     .appendQueryParameter("password",password)
                     .build()
@@ -50,7 +50,7 @@ public class PHPDataBaseHelper {
     public boolean signup(String username,String password,String email) {
         try {
             String response = getResponse(serverUri.buildUpon()
-                    .appendPath("signup/")
+                    .appendPath("signup.php")
                     .appendQueryParameter("username",username)
                     .appendQueryParameter("password",password)
                     .build()

@@ -28,6 +28,8 @@ public class ProfileFragment extends Fragment {
     EditText etNewPass;
     EditText etVerifyNewPass;
 
+    EditText etEmail;
+
     CheckBox cbShowPass1;
     CheckBox cbShowPass2;
 
@@ -46,6 +48,8 @@ public class ProfileFragment extends Fragment {
         etUserName = (EditText) myView.findViewById(R.id.etUserName);
         etNewPass = (EditText) myView.findViewById(R.id.etNewPass);
         etVerifyNewPass =  (EditText) myView.findViewById(R.id.etVerifyNewPass);
+
+        etEmail = (EditText) myView.findViewById(R.id.etEmail);
 
         cbShowPass1 = (CheckBox)myView.findViewById(R.id.cbShowPass1);
         cbShowPass2 = (CheckBox)myView.findViewById(R.id.cbShowPass2);
@@ -91,6 +95,13 @@ public class ProfileFragment extends Fragment {
                 etVerifyNewPass.setSelection(etVerifyNewPass.getText().length());
             }
         });
+
+    }
+
+
+    private boolean isEmailValid(String email) {
+        return email.contains("@") && (email.endsWith(".com") || email.endsWith(".co.il") ||
+        email.endsWith(".jct.ac.il"));
 
     }
 }
