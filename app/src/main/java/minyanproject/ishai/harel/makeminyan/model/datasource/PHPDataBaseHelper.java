@@ -40,7 +40,7 @@ public class PHPDataBaseHelper {
                     .appendQueryParameter("password",password)
                     .build()
                     .toString());
-            if(response == SUCCESS_STRING)
+            if(response.equals(SUCCESS_STRING))
                 return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class PHPDataBaseHelper {
                     .appendQueryParameter("password",password)
                     .build()
                     .toString());
-            if(response == SUCCESS_STRING)
+            if(response.equals(SUCCESS_STRING))
                 return true;
         } catch (Exception e) {
             return false;
@@ -70,7 +70,7 @@ public class PHPDataBaseHelper {
                     urlBuilder.appendQueryParameter(field.getName(), field.get(o).toString());
             }
             String response = getResponse(urlBuilder.build().toString());
-            if(response == SUCCESS_STRING)
+            if(response.equals(SUCCESS_STRING))
                 return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -90,7 +90,7 @@ public class PHPDataBaseHelper {
                 urlBuilder.appendQueryParameter(field.getName(), field.get(o).toString());
             }
             String response = getResponse(urlBuilder.build().toString());
-            if(response == SUCCESS_STRING)
+            if(response.equals(SUCCESS_STRING))
                 return true;
         } catch (Exception e) {
             e.printStackTrace();

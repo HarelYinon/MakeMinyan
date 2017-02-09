@@ -2,6 +2,8 @@ package minyanproject.ishai.harel.makeminyan.controller;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
@@ -15,6 +17,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import minyanproject.ishai.harel.makeminyan.R;
+import minyanproject.ishai.harel.makeminyan.model.datasource.PHPDataBaseHelper;
+import minyanproject.ishai.harel.makeminyan.model.entities.User;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -63,18 +67,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        if(CheckUserAndPass(v)) {
+
             if (v == btnLoginButton) {
-                SharedPreferences.Editor editor = getSharedPreferences("userinfo", MODE_PRIVATE).edit();
-                editor.putString("username", etUserName.getText().toString());
-                editor.putString("password", etUserPassword.getText().toString());
-                editor.commit();
-                startNavigationController();
-                finish();
+                AsyncTaskSignIn();
             } else if (v == btnRegisterButton) {
-                register();
+                aSyncTaskSignUp();
             }
-        }
+
 
     }
 
@@ -90,17 +89,81 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //TODO: this func need to check if the User exist and the password is the right password
-    private boolean CheckUserAndPass(View v) {
-        if(!etUserName.getText().toString().isEmpty() &&
-                !etUserPassword.getText().toString().isEmpty()){
-            if(v==btnLoginButton){
-                return true;
-            }
-            else if (v==btnRegisterButton){
-                return true;
-            }
+
+    private void aSyncTaskSignUp()
+    {
+        User localUser = new User(etUserName.getText().toString(),etUserPassword.getText().toString());
+        User email = new User("Email",null);
+
+        if(localUser.getUsername().isEmpty())
+            ;
+        else if(localUser.getPassword().isEmpty())
+            ;
+        else if(email.getUsername().isEmpty())
+            ;
+        else
+        {
+            new AsyncTask<User, Void, Boolean>() {
+                @Override
+                protected Boolean doInBackground(User... params) {
+                    PHPDataBaseHelper phpDataBaseHelper = new PHPDataBaseHelper();
+                    if (phpDataBaseHelper.signup(params[0].getUsername(),
+                            params[0].getPassword(),
+                            params[1].getUsername()))//this email
+                        return true;
+                    return false;
+                }
+
+                @Override
+                protected void onPostExecute(Boolean aBoolean) {
+                    //TODO:replace with register action
+                    if (aBoolean)
+                        ;//Toast succeeded
+                    else
+                        ;//Toast failed
+                }
+            }.execute(localUser, email);
         }
-        Toast.makeText(getApplicationContext(), R.string.InvalidUserNameOrPassword, Toast.LENGTH_SHORT).show();
-        return false;
+    }
+
+    private void AsyncTaskSignIn()
+    {
+        User localUser = new User(etUserName.getText().toString(),etUserPassword.getText().toString());
+
+        if(localUser.getUsername().isEmpty())
+            ;
+        else if(localUser.getPassword().isEmpty())
+            ;
+        else
+        {
+            new AsyncTask<User, Void, Boolean>() {
+                @Override
+                protected Boolean doInBackground(User... params) {
+                    PHPDataBaseHelper phpDataBaseHelper = new PHPDataBaseHelper();
+                    if (phpDataBaseHelper.signin(params[0].getUsername(),
+                            params[0].getPassword()))
+                        return true;
+                    return false;
+                }
+
+                @Override
+                protected void onPostExecute(Boolean aBoolean) {
+                    //TODO:replace with register action
+                    if (aBoolean) {
+                        SharedPreferences.Editor editor = getSharedPreferences("userinfo", MODE_PRIVATE).edit();
+                        editor.putString("username", etUserName.getText().toString());
+                        editor.putString("password", etUserPassword.getText().toString());
+                        editor.commit();
+                        startNavigationController();
+                        finish();
+                    }
+
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(),"could'nt sign in",Toast.LENGTH_LONG);
+                    }
+                }
+            }.execute(localUser);
+        }
     }
 }
